@@ -6,8 +6,8 @@
 
 export const site = {
   name: "LPR Business Services",
-  legalName: "La Piedra Roja — LPR Business Services",
-  wordmark: "La Piedra Roja",
+  legalName: "LPR Business Services",
+  wordmark: "LPR Business Services",
   domain: "https://lapiedraroja.com",
   email: "danielle@lapiedraroja.com",
   phone: "+1-415-350-5333",
