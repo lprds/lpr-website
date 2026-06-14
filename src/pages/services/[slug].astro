@@ -28,7 +28,7 @@ const serviceLd = {
 >
   <PageHero eyebrow={`Services · ${pillar.title}`} title={pillar.title} sub={pillar.intro} />
 
-  <Section title="What's included" intro={pillar.forWho}>
+  <Section title="What we handle" intro={pillar.forWho}>
     <div class="grid md:grid-cols-2 gap-5 mt-8">
       {pillar.offerings.map((o) => (
         <div class="rounded-xl border border-line bg-white p-6">
@@ -40,5 +40,5 @@ const serviceLd = {
   </Section>
 
   <Faq items={pillar.faq} />
-  <CtaBand heading={`Bring ${pillar.title} in-house — without the hire.`} />
+  <CtaBand heading={`Let's talk about your ${pillar.title}.`} />
 </Base>

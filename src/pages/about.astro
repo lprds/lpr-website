@@ -6,10 +6,10 @@ import CtaBand from "../components/CtaBand.astro";
 import { site } from "../data/site";
 
 const expertise = [
-  "Bookkeeping, controller, and fractional-CFO work in QuickBooks, Xero, and Ramp",
+  "Bookkeeping, controller, and fractional-CFO work in QuickBooks, Xero, Sage 100 Contractor, and Ramp",
   "Construction and project-based finance — job costing, WIP, insurance audits",
   "Operations and admin: process design, SOPs, and back-office management",
-  "Practical AI and automation, applied with guardrails and a person in the loop",
+  "Bringing businesses from low-tech to high-tech, alongside your existing IT team",
   "Bilingual service — English and Spanish",
 ];
 
@@ -31,39 +31,45 @@ const aboutLd = {
 ---
 <Base
   title={`About LPR Business Services | ${site.founder}, ${site.founderTitle}`}
-  description="LPR Business Services is a remote-first finance, operations, and AI partner founded by Danielle Stone — bilingual, nationwide, and built around clarity, intention, and systems that actually work."
+  description="LPR Business Services is a remote finance, operations, and modernization partner founded by Danielle Stone — bilingual, nationwide, and built around clarity, intention, and systems that actually work."
   jsonLd={[personLd, aboutLd]}
 >
   <PageHero
     eyebrow="About LPR"
     title="Financial clarity, run with intention."
-    sub="LPR Business Services brings finance, operations, and AI together under one roof — delivered remotely, in English and Spanish, with the calm of systems that actually work."
+    sub="LPR Business Services brings finance, operations, and modern systems together under one roof — delivered remotely, in English and Spanish, with the calm of a back office that actually works."
   />
 
   <Section title="Why LPR exists">
     <div class="max-w-2xl mt-6 space-y-4 text-graytext leading-relaxed text-lg">
       <p>
         Most growing businesses don't need a full finance department, an office manager, and a
-        separate automation consultant — they need one trusted partner who can do all three and make
+        separate systems consultant — they need one trusted partner who can do all three and make
         them work together. That's the gap LPR was built to fill.
       </p>
       <p>
         Founded by {site.founder}, LPR pairs hands-on bookkeeping and controller work with
-        forward-looking, CFO-level guidance, the operational support that keeps a business running day
-        to day, and practical AI that clears the manual bottlenecks. We've worked with businesses at
-        every stage — from solo founders who need clean books and reliable reporting to established
-        companies ready for cash-flow forecasting, job costing, and strategic planning — across
-        construction, professional services, creative agencies, and technology.
+        forward-looking, CFO-level guidance and the operational support that keeps a business running
+        day to day. We've worked with businesses at every stage — from solo founders who need clean
+        books and reliable reporting to established companies ready for cash-flow forecasting, job
+        costing, and strategic planning — across real estate, professional services, e-commerce, and
+        construction.
+      </p>
+      <p>
+        We're also the bridge from low-tech to high-tech. Plenty of businesses still run on
+        spreadsheets, paper, and disconnected tools, and the jump to modern systems feels daunting.
+        LPR makes that jump for you — meeting your business where it is and working alongside your
+        existing IT team, however big or small, to bring everything online and up to date. You don't
+        have to worry about how it gets done; that's our job.
       </p>
       <p>
         Our approach is deliberately intentional: we focus your resources on their highest needs,
-        build operational systems that hold up under pressure, and keep technology in service of
-        people — AI does the repetitive lifting, while judgment stays human. The result is financial
-        clarity and a back office you can stop worrying about.
+        build systems that hold up under pressure, and keep technology in service of people. The
+        result is financial clarity and a back office you can stop worrying about.
       </p>
       <p>
-        We're remote-first on purpose. There's no office to visit and never a desk to pay for — just
-        senior-level support delivered wherever your business runs, in the language you prefer.
+        We work entirely remotely and serve clients nationwide, in English and Spanish — senior-level
+        support delivered wherever your business runs, without the overhead of an in-house team.
       </p>
     </div>
   </Section>

@@ -46,24 +46,24 @@ export const industries: Industry[] = [
     title: "Bookkeeping & CFO Support for Law & Professional Services",
     eyebrow: "Industry",
     intro:
-      "Firms and agencies live and die by utilization, billing accuracy, and — for attorneys — trust-account discipline. We bring precision to the books so you can bill confidently and lead the practice.",
+      "Firms and agencies live and die by utilization, billing accuracy, and clean retainer tracking. We bring precision to the books so you can bill confidently and lead the practice — with client funds and operating funds kept properly separate.",
     pains: [
-      "Trust and operating accounts that must never be commingled",
       "Revenue tied to billable time, retainers, and work-in-progress",
+      "Client funds and operating funds that have to be kept properly separate",
       "Partner and owner draws that complicate an already busy close",
     ],
     howWeHelp: [
-      "Disciplined trust-account handling and reconciliation (for legal practices)",
-      "Clean billing, retainer, and WIP tracking that reconciles to revenue",
+      "Clean billing, retainer, and work-in-progress tracking that reconciles to revenue",
+      "Client and operating funds kept in separate accounts and reconciled on schedule",
       "Partner-distribution and profitability reporting you can act on",
     ],
     faq: [
-      { q: "Do you understand attorney trust (IOLTA) accounting?", a: "Yes. Trust and operating funds are kept strictly separate and reconciled on schedule, with documentation built for compliance." },
+      { q: "Can you keep client funds and operating funds properly separated?", a: "Yes. We keep client and operating funds in separate accounts, reconciled on schedule, with clear documentation of every movement." },
       { q: "Can you track profitability by service line or partner?", a: "Yes. We structure the books so you can see margin by service line, engagement, or partner — not just one firm-wide number." },
     ],
     seoTitle: "Bookkeeping for Law Firms & Professional Services",
     seoDescription:
-      "Remote bookkeeping and fractional-CFO support for law firms and professional-services firms — trust-account discipline, WIP and billing accuracy, profitability reporting.",
+      "Remote bookkeeping and fractional-CFO support for law firms and professional-services firms — billing and WIP accuracy, separated client funds, and profitability reporting.",
   },
   {
     slug: "ecommerce",
@@ -83,7 +83,7 @@ export const industries: Industry[] = [
       "Sales-tax nexus tracking and filing support across jurisdictions",
     ],
     faq: [
-      { q: "Do you integrate with Shopify, Amazon, and our processors?", a: "Yes. We reconcile payouts, fees, and refunds across your channels and processors so the books match what actually hit the bank." },
+      { q: "Do you work with Shopify, Amazon, and our payment processors?", a: "Yes. We work from the data your channels and processors produce — reconciling payouts, fees, and refunds so your books match what actually hit the bank." },
       { q: "Can you help with multi-state sales tax?", a: "Yes — we track nexus, calculate what's owed by jurisdiction, and support filing so you stay compliant as you grow." },
     ],
     seoTitle: "E-commerce Bookkeeping & Accounting Services",

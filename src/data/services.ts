@@ -41,9 +41,8 @@ export const pillars: Pillar[] = [
       { name: "Ownership & Enterprise Advisory", desc: "Succession strategy, exit-readiness planning, valuation support, retirement and 401(k) integration, and enterprise restructuring." },
     ],
     faq: [
-      { q: "How do you use AI on my books?", a: "To work faster and catch more — but people stay in control. A human stays in the loop wherever it's critical, with guardrails and strict confidentiality throughout." },
-      { q: "Do you work with our existing accountant or CPA?", a: "Yes. We handle the books and management reporting and coordinate directly with your CPA at tax time, so nothing falls between the two." },
-      { q: "Which accounting software do you support?", a: "We work in QuickBooks Online, QuickBooks Desktop, and Xero, and can advise on the right platform if you're still deciding." },
+      { q: "Do you work with our existing accountant or CPA?", a: "Yes. We handle the books and management reporting and coordinate directly with your CPA at tax time, so your records and your tax filing stay in sync." },
+      { q: "Which accounting software do you support?", a: "We work in QuickBooks Online, QuickBooks Desktop, Xero, and Sage 100 Contractor, and can advise on the right platform if you're still deciding." },
       { q: "Can you clean up books that are behind?", a: "Yes — catch-up and clean-up are core services. We bring records current, document what changed, and put a monthly rhythm in place so it stays that way." },
     ],
     seoTitle: "Outsourced Bookkeeping, Controller & Fractional CFO Services",
