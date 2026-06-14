@@ -1,5 +1,9 @@
 // Three service pillars. No rates anywhere (decided: pricing stays in proposals).
 // Each pillar drives /services/<slug> and the homepage pillar band.
+//
+// POSITIONING NOTE: AI is for the OPERATIONAL side only (admin, scheduling,
+// workflows, office-management). The books are handled by people, never AI —
+// this separation is stated explicitly on Finance, AI, and the home FAQ.
 
 export type Offering = { name: string; desc: string };
 export type Faq = { q: string; a: string };
@@ -24,7 +28,7 @@ export const pillars: Pillar[] = [
     title: "Finance & Accounting",
     eyebrow: "Pillar 01",
     intro:
-      "Accurate books through forward-looking strategy — one team that scales with you from day-to-day bookkeeping to CFO-level guidance, entirely remote.",
+      "Accurate books through forward-looking strategy — one team that scales with you from day-to-day bookkeeping to CFO-level guidance, entirely remote. Your financials are handled by experienced people, never AI.",
     forWho:
       "For owners who want their financials handled end to end — clean records, real oversight, and a partner who can think a few quarters ahead.",
     offerings: [
@@ -35,6 +39,7 @@ export const pillars: Pillar[] = [
       { name: "Ownership & Enterprise Advisory", desc: "Succession strategy, exit-readiness planning, valuation support, retirement and 401(k) integration, and enterprise restructuring." },
     ],
     faq: [
+      { q: "Will AI be doing my bookkeeping?", a: "No. Your books are handled by experienced people — never AI. We offer AI separately, and only for the operational side of the business (admin, scheduling, and workflows), kept completely apart from your financial records." },
       { q: "Do you work with our existing accountant or CPA?", a: "Yes. We handle the books and management reporting and coordinate directly with your CPA at tax time, so nothing falls between the two." },
       { q: "Which accounting software do you support?", a: "We work in QuickBooks Online, QuickBooks Desktop, and Xero, and can advise on the right platform if you're still deciding." },
       { q: "Can you clean up books that are behind?", a: "Yes — catch-up and clean-up are core services. We bring records current, document what changed, and put a monthly rhythm in place so it stays that way." },
@@ -60,7 +65,7 @@ export const pillars: Pillar[] = [
     faq: [
       { q: "How is this different from hiring an office manager?", a: "You get the same coverage without recruiting, payroll, benefits, or onboarding — scaled to what you actually need, and ready to grow or contract as you do." },
       { q: "Will you use our existing tools?", a: "Yes. We work inside the systems you already have, and recommend changes only where they clearly save you time or money." },
-      { q: "Does this connect to the AI and automation work?", a: "It's a natural on-ramp. Once your operations are mapped, we can automate the repetitive parts — see AI & Automation." },
+      { q: "Can the repetitive parts be automated?", a: "Often, yes. Once your operations are mapped, the repetitive admin can be streamlined with AI — see AI & Automation. The books always stay separate and human-handled." },
     ],
     seoTitle: "Virtual Office Manager & Remote Administrative Support",
     seoDescription:
@@ -72,20 +77,21 @@ export const pillars: Pillar[] = [
     title: "AI & Automation",
     eyebrow: "Pillar 03",
     intro:
-      "Operational leverage built on a foundation that already works — practical AI and automation that remove repetitive work and tighten your reporting.",
+      "Practical AI and automation for the operational side of your business — admin, scheduling, office management, and the repetitive workflows that eat your team's time. Deliberately kept separate from your books, which stay in experienced human hands.",
     forWho:
-      "For businesses ready to turn well-run operations into real efficiency, with the right guardrails in place.",
+      "For businesses that want to streamline operations and admin with AI — without it ever going near the financial records.",
     offerings: [
-      { name: "AI Systems Build & Automation", desc: "AI workflow builds, automation architecture, prompt-engineering frameworks, AI-integrated reporting, and AI SOP development." },
+      { name: "AI Systems Build & Automation", desc: "AI workflow builds, automation architecture, prompt-engineering frameworks, operational dashboards, and AI SOP development — focused on admin and operations." },
       { name: "AI Governance & Risk Strategy", desc: "AI policy design, regulatory exposure mapping, data-governance advisory, AI risk assessment, and executive adoption strategy." },
     ],
     faq: [
-      { q: "We're not a tech company — is this relevant to us?", a: "Especially so. The biggest gains come from automating ordinary back-office work: data entry, reporting, follow-ups, and reconciliations." },
+      { q: "We're not a tech company — is this relevant to us?", a: "Especially so. The biggest gains come from automating ordinary operational work: data entry, scheduling, follow-ups, and document workflows." },
+      { q: "Does AI touch my financial data or books?", a: "No. This is operational automation — admin, scheduling, and workflows only. Your bookkeeping and financial records are handled by people and kept entirely separate." },
       { q: "Is our data safe?", a: "Governance comes first. We map where data lives, set clear policies, and put guardrails in place before anything is automated." },
     ],
-    seoTitle: "AI Automation & Governance for Small Business Operations",
+    seoTitle: "AI Automation & Governance for Operations & Admin",
     seoDescription:
-      "Practical AI workflow builds, business-process automation, and AI governance for growing businesses — operational leverage with the right guardrails.",
+      "Practical AI workflow builds, business-process automation, and AI governance for the operational side of growing businesses — never your books.",
   },
 ];
 
