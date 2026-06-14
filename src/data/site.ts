@@ -25,7 +25,9 @@ export const site = {
 
   // Set at build time via env; falls back to mailto if unset.
   formEndpoint: import.meta.env.PUBLIC_CONTACT_WEBHOOK ?? "",
-  // "Book a fit call" — until a scheduler is chosen, link to /contact.
+  // Primary call-to-action. Label is centralized here; destination falls back
+  // to the Contact page until/unless a (free) scheduler URL is provided.
+  ctaLabel: "Get in touch",
   bookingUrl: import.meta.env.PUBLIC_BOOKING_URL ?? "/contact",
   // Cloudflare Web Analytics token (Pages → Web Analytics).
   cfAnalyticsToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN ?? "",

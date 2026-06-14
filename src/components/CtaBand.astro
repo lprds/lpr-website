@@ -14,7 +14,7 @@ const {
     <h2 class="text-3xl md:text-4xl text-white">{heading}</h2>
     <p class="mt-4 text-cream/80 max-w-xl mx-auto">{sub}</p>
     <div class="mt-8 flex flex-wrap gap-3 justify-center">
-      <a href={site.bookingUrl} class="btn bg-gold text-red-dark hover:opacity-90">Book a fit call</a>
+      <a href={site.bookingUrl} class="btn bg-gold text-red-dark hover:opacity-90">{site.ctaLabel}</a>
       <a href={`mailto:${site.email}`} class="btn border border-cream/40 text-white hover:bg-white/10">Email us</a>
     </div>
   </div>
