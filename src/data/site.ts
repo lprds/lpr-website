@@ -13,7 +13,7 @@ export const site = {
   phone: "+1-415-350-5333",
   phoneDisplay: "(415) 350-5333",
   founder: "Danielle Stone",
-  founderTitle: "Founder & Principal",
+  founderTitle: "Principal Owner",
   linkedin: "https://www.linkedin.com/in/danielle-stone-a44b811b5/",
 
   tagline: "Fractional finance, operations & AI — run remotely.",
