@@ -1,0 +1,21 @@
+---
+import { site } from "../data/site";
+interface Props {
+  heading?: string;
+  sub?: string;
+}
+const {
+  heading = "Let's see if we're a fit.",
+  sub = "A short, no-pressure call to understand your business and where we can help.",
+} = Astro.props;
+---
+<section class="bg-red-deep text-cream">
+  <div class="max-w-4xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl text-white">{heading}</h2>
+    <p class="mt-4 text-cream/80 max-w-xl mx-auto">{sub}</p>
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">
+      <a href={site.bookingUrl} class="btn bg-gold text-red-dark hover:opacity-90">Book a fit call</a>
+      <a href={`mailto:${site.email}`} class="btn border border-cream/40 text-white hover:bg-white/10">Email us</a>
+    </div>
+  </div>
+</section>

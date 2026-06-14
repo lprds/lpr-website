@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import emblem from "../assets/lpr-emblem-white.png";
+import { site, serviceNav, industryNav } from "../data/site";
+const year = 2026;
+---
+<footer class="bg-red-dark text-cream/85 mt-24">
+  <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <div>
+      <div class="flex items-center gap-3">
+        <Image src={emblem} alt="" width={36} height={36} class="h-9 w-auto" />
+        <span class="wordmark text-lg text-white">{site.wordmark}</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed max-w-xs text-cream/75">
+        Your remote-first partner for finance, operations, and AI — bilingual, nationwide.
+      </p>
+      <p class="mt-4 text-sm">
+        <a href={`mailto:${site.email}`} class="hover:text-gold transition-colors">{site.email}</a><br />
+        <a href={`tel:${site.phone}`} class="hover:text-gold transition-colors">{site.phoneDisplay}</a>
+      </p>
+    </div>
+
+    <nav aria-label="Services">
+      <h2 class="font-display text-sm uppercase tracking-wider text-gold mb-3">Services</h2>
+      <ul class="space-y-2 text-sm">
+        {serviceNav.map((s) => <li><a href={s.href} class="hover:text-white transition-colors">{s.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav aria-label="Industries">
+      <h2 class="font-display text-sm uppercase tracking-wider text-gold mb-3">Industries</h2>
+      <ul class="space-y-2 text-sm">
+        {industryNav.map((i) => <li><a href={i.href} class="hover:text-white transition-colors">{i.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav aria-label="Company">
+      <h2 class="font-display text-sm uppercase tracking-wider text-gold mb-3">Company</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+        <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+        <li><a href={site.linkedin} class="hover:text-white transition-colors">LinkedIn</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-white/10">
+    <p class="max-w-6xl mx-auto px-6 py-5 text-xs text-cream/60">
+      © {year} {site.legalName}. Remote · Bilingual · Nationwide.
+    </p>
+  </div>
+</footer>

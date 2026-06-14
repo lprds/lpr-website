@@ -1,25 +1,109 @@
 ---
-import "../styles/global.css";
----
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import PillarCard from "../components/PillarCard.astro";
+import IndustryCard from "../components/IndustryCard.astro";
+import Faq from "../components/Faq.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { site } from "../data/site";
+import { pillars } from "../data/services";
+import { industries } from "../data/industries";
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-		<title>LPR — toolchain smoke test</title>
-	</head>
-	<body class="bg-cream">
-		<main class="max-w-3xl mx-auto p-12">
-			<p class="font-[var(--font-display)] uppercase tracking-widest text-sm text-red-bright">Brand token smoke test</p>
-			<h1 class="text-5xl mt-3 text-ink">Finance, operations &amp; AI — run <span class="hl">remotely</span>.</h1>
-			<p class="wordmark text-2xl text-red-deep mt-4">La Piedra Roja</p>
-			<div class="mt-6 flex gap-3">
-				<a class="btn btn-primary">Book a fit call</a>
-				<a class="btn btn-ghost">See how we work</a>
-			</div>
-		</main>
-	</body>
-</html>
+const icons: Record<string, string> = {
+  "finance-accounting": "$",
+  "operations-admin": "◷",
+  "ai-automation": "✦",
+};
+
+const industryBlurbs: Record<string, string> = {
+  "real-estate": "Multi-entity, multi-property books and cash-flow clarity for your next deal.",
+  "law-professional-services": "Trust-account discipline, WIP accuracy, and profitability you can act on.",
+  "ecommerce": "Multi-channel reconciliation, real margins, and multi-state sales-tax support.",
+  "construction": "Job costing, WIP tracking, and insurance-audit readiness on every project.",
+};
+
+const homeFaq = [
+  { q: "Where is LPR located, and do you really work fully remotely?", a: "We're remote-first by design and serve clients nationwide. Everything is cloud-based, so there's no office visit required — and we make occasional on-site visits only when invited." },
+  { q: "Do you only work with certain industries?", a: "No. We have deep experience in real estate, professional services, e-commerce, and construction, but we serve growing businesses across many industries — those are highlighted specialties, not a limit." },
+  { q: "Do you offer services in Spanish?", a: "Yes. LPR is bilingual, and we work comfortably with Spanish-speaking business owners in both languages." },
+  { q: "Can you be our whole back office, not just bookkeeping?", a: "That's the idea. We span finance and accounting, operations and admin, and AI and automation — so one partner can run the financial and operational back office together." },
+];
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.domain,
+  inLanguage: ["en", "es"],
+};
+---
+<Base
+  title="LPR Business Services | Remote Bookkeeping, CFO, Operations & AI"
+  description={site.metaDescription}
+  jsonLd={[websiteLd]}
+>
+  <Hero />
+
+  <Section
+    eyebrow="What we do"
+    title="One partner for your entire back office"
+    intro="Three connected pillars — so finance, operations, and AI work together instead of living in separate silos."
+  >
+    <div class="grid md:grid-cols-3 gap-5 mt-8">
+      {pillars.map((p) => (
+        <PillarCard
+          eyebrow={p.eyebrow}
+          title={p.title}
+          desc={p.intro}
+          href={`/services/${p.slug}`}
+          icon={icons[p.slug]}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <div class="bg-cream/50 border-y border-line">
+    <Section
+      eyebrow="Who we serve"
+      title="Industry-fluent — and never boxed in"
+      intro="We speak the language of these industries deeply, and serve growing businesses well beyond them."
+    >
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+        {industries.map((i) => (
+          <IndustryCard
+            title={i.nav}
+            href={`/industries/${i.slug}`}
+            blurb={industryBlurbs[i.slug]}
+            tag={i.eyebrow === "Specialty" ? "Specialty" : undefined}
+          />
+        ))}
+      </div>
+    </Section>
+  </div>
+
+  <Section
+    eyebrow="Why LPR"
+    title="Modern, remote, and built to be found"
+    intro="The way businesses buy back-office help has changed. We're built for it."
+  >
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div>
+        <h3 class="text-lg text-red-deep">Remote-first, on purpose</h3>
+        <p class="text-graytext mt-2 text-sm leading-relaxed">Cloud-based and work-with-you-anywhere. You get senior-level support without the cost and overhead of in-house hires — and never an empty desk to pay for.</p>
+      </div>
+      <div>
+        <h3 class="text-lg text-red-deep">Bilingual &amp; nationwide</h3>
+        <p class="text-graytext mt-2 text-sm leading-relaxed">English and Spanish, across the country. Wherever your business runs, we can run the back office with you.</p>
+      </div>
+      <div>
+        <h3 class="text-lg text-red-deep">Finance, ops &amp; AI together</h3>
+        <p class="text-graytext mt-2 text-sm leading-relaxed">Clean books, a steady operational rhythm, and practical automation — coordinated, not stitched together from three vendors.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Faq items={homeFaq} heading="Questions, answered" />
+
+  <CtaBand />
+</Base>

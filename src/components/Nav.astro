@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import emblem from "../assets/lpr-emblem-red.png";
+import { site, mainNav } from "../data/site";
+---
+<header class="border-b border-line bg-white sticky top-0 z-50">
+  <div class="bg-red-deep text-cream text-[12px] tracking-[0.14em] uppercase text-center py-1.5 font-display font-medium">
+    Remote · Bilingual · Nationwide
+  </div>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4" aria-label="Main navigation">
+    <a href="/" class="flex items-center gap-3" aria-label={`${site.wordmark} home`}>
+      <Image src={emblem} alt="" width={38} height={38} class="h-9 w-auto" />
+      <span class="wordmark text-xl text-ink">{site.wordmark}</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-7 text-[15px] font-medium text-ink/80">
+      {mainNav.map((item) =>
+        item.children ? (
+          <li class="relative group">
+            <button class="flex items-center gap-1 py-2 hover:text-red-deep transition-colors" aria-haspopup="true">
+              {item.label}
+              <span class="text-xs text-graytext">▾</span>
+            </button>
+            <ul class="absolute left-0 top-full hidden group-hover:block group-focus-within:block bg-white border border-line rounded-xl shadow-lg py-2 min-w-[260px]">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.href} class="block px-4 py-2 hover:bg-cream hover:text-red-deep transition-colors">
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li>
+            <a href={item.href} class="py-2 hover:text-red-deep transition-colors">{item.label}</a>
+          </li>
+        )
+      )}
+    </ul>
+
+    <a href={site.bookingUrl} class="btn btn-primary text-sm">Book a fit call</a>
+  </nav>
+</header>

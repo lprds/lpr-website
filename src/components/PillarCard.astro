@@ -1,0 +1,17 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  desc: string;
+  href: string;
+  icon: string;
+}
+const { eyebrow, title, desc, href, icon } = Astro.props;
+---
+<a href={href} class="block rounded-2xl border border-line bg-white p-7 hover:shadow-lg hover:border-red-deep/30 transition-all group">
+  <div class="w-11 h-11 rounded-xl bg-red-deep/[0.07] grid place-items-center text-red-deep font-display font-bold text-lg mb-4">{icon}</div>
+  <p class="font-display text-xs uppercase tracking-wider text-graytext">{eyebrow}</p>
+  <h3 class="text-xl mt-1 group-hover:text-red-deep transition-colors">{title}</h3>
+  <p class="text-sm text-graytext mt-2 leading-relaxed">{desc}</p>
+  <span class="inline-block mt-4 text-sm font-display font-semibold text-red-deep">Explore &rarr;</span>
+</a>
