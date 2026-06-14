@@ -1,0 +1,44 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import Faq from "../../components/Faq.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { pillars, type Pillar } from "../../data/services";
+
+export function getStaticPaths() {
+  return pillars.map((p) => ({ params: { slug: p.slug }, props: { pillar: p } }));
+}
+const { pillar } = Astro.props as { pillar: Pillar };
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: pillar.title,
+  serviceType: pillar.title,
+  provider: { "@type": "ProfessionalService", name: "LPR Business Services", url: "https://lapiedraroja.com" },
+  areaServed: { "@type": "Country", name: "United States" },
+  description: pillar.seoDescription,
+};
+---
+<Base
+  title={`${pillar.seoTitle} | LPR Business Services`}
+  description={pillar.seoDescription}
+  jsonLd={[serviceLd]}
+>
+  <PageHero eyebrow={`Services · ${pillar.title}`} title={pillar.title} sub={pillar.intro} />
+
+  <Section title="What's included" intro={pillar.forWho}>
+    <div class="grid md:grid-cols-2 gap-5 mt-8">
+      {pillar.offerings.map((o) => (
+        <div class="rounded-xl border border-line bg-white p-6">
+          <h3 class="text-lg text-red-deep">{o.name}</h3>
+          <p class="text-sm text-graytext mt-2 leading-relaxed">{o.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Faq items={pillar.faq} />
+  <CtaBand heading={`Bring ${pillar.title.toLowerCase()} in-house — without the hire.`} />
+</Base>

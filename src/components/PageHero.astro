@@ -1,0 +1,17 @@
+---
+import { site } from "../data/site";
+interface Props {
+  eyebrow: string;
+  title: string;
+  sub: string;
+}
+const { eyebrow, title, sub } = Astro.props;
+---
+<section class="bg-gradient-to-b from-white to-cream/40 border-b border-line">
+  <div class="max-w-4xl mx-auto px-6 py-16 md:py-20">
+    <p class="font-display font-semibold text-[13px] tracking-[0.16em] uppercase text-red-bright">{eyebrow}</p>
+    <h1 class="text-4xl md:text-5xl mt-3 leading-[1.1] max-w-3xl">{title}</h1>
+    <p class="text-lg text-graytext mt-5 max-w-2xl">{sub}</p>
+    <div class="mt-7"><a href={site.bookingUrl} class="btn btn-primary">Book a fit call</a></div>
+  </div>
+</section>

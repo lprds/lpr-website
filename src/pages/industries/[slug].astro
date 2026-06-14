@@ -1,0 +1,55 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import Faq from "../../components/Faq.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { industries, type Industry } from "../../data/industries";
+
+export function getStaticPaths() {
+  return industries.map((i) => ({ params: { slug: i.slug }, props: { industry: i } }));
+}
+const { industry } = Astro.props as { industry: Industry };
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: industry.title,
+  provider: { "@type": "ProfessionalService", name: "LPR Business Services", url: "https://lapiedraroja.com" },
+  areaServed: { "@type": "Country", name: "United States" },
+  description: industry.seoDescription,
+};
+---
+<Base
+  title={`${industry.seoTitle} | LPR Business Services`}
+  description={industry.seoDescription}
+  jsonLd={[serviceLd]}
+>
+  <PageHero eyebrow={`${industry.eyebrow} · ${industry.nav}`} title={industry.title} sub={industry.intro} />
+
+  <Section title="What we hear from owners like you">
+    <div class="grid md:grid-cols-3 gap-5 mt-8">
+      {industry.pains.map((p) => (
+        <div class="rounded-xl border border-line bg-cream/60 p-6">
+          <p class="text-ink leading-relaxed">{p}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <div class="bg-cream/50 border-y border-line">
+    <Section title="How LPR helps">
+      <ul class="grid md:grid-cols-3 gap-5 mt-8">
+        {industry.howWeHelp.map((h) => (
+          <li class="rounded-xl border border-line bg-white p-6 flex gap-3">
+            <span class="text-gold-deep font-display font-bold">✓</span>
+            <span class="text-ink leading-relaxed">{h}</span>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  </div>
+
+  <Faq items={industry.faq} />
+  <CtaBand heading={`Books that fit how ${industry.nav.toLowerCase()} actually runs.`} />
+</Base>

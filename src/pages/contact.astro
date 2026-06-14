@@ -1,0 +1,108 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+import { industries } from "../data/industries";
+---
+<Base
+  title="Contact LPR Business Services | Book a Fit Call"
+  description="Get in touch with LPR Business Services. Remote-first finance, operations, and AI support — bilingual, nationwide. Book a short fit call or send us a message."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Let's see if we're a fit."
+    sub="Tell us a little about your business and where you need help. We'll follow up to set a short, no-pressure call."
+  />
+
+  <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-[1fr_1.1fr] gap-12">
+    <div>
+      <h2 class="text-2xl">How we work</h2>
+      <p class="text-graytext mt-3 leading-relaxed">
+        LPR is 100% remote and serves clients nationwide, in English and Spanish. Everything runs in
+        the cloud — no office visit required. We make occasional on-site visits only when invited.
+      </p>
+      <dl class="mt-8 space-y-5">
+        <div>
+          <dt class="font-display text-xs uppercase tracking-wider text-graytext">Email</dt>
+          <dd class="mt-1"><a class="text-red-deep hover:underline" href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </div>
+        <div>
+          <dt class="font-display text-xs uppercase tracking-wider text-graytext">Phone</dt>
+          <dd class="mt-1"><a class="text-red-deep hover:underline" href={`tel:${site.phone}`}>{site.phoneDisplay}</a></dd>
+        </div>
+        <div>
+          <dt class="font-display text-xs uppercase tracking-wider text-graytext">Service area</dt>
+          <dd class="mt-1 text-ink">Nationwide · Remote · Bilingual (EN/ES)</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="rounded-2xl border border-line bg-cream p-7">
+      <form id="contact-form" class="space-y-4" action={site.formEndpoint} method="POST">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sm font-medium text-ink">Name</span>
+            <input required name="name" type="text" class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2.5 focus:border-red-deep outline-none" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-ink">Email</span>
+            <input required name="email" type="email" class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2.5 focus:border-red-deep outline-none" />
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-sm font-medium text-ink">Business name</span>
+          <input name="business" type="text" class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2.5 focus:border-red-deep outline-none" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium text-ink">Industry</span>
+          <select name="industry" class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2.5 focus:border-red-deep outline-none">
+            <option value="">Select one…</option>
+            {industries.map((i) => <option value={i.nav}>{i.nav}</option>)}
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium text-ink">How can we help?</span>
+          <textarea required name="message" rows="4" class="mt-1 w-full rounded-lg border border-line bg-white px-3 py-2.5 focus:border-red-deep outline-none"></textarea>
+        </label>
+        <!-- honeypot -->
+        <input type="text" name="company_website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+        <button type="submit" class="btn btn-primary w-full">Send message</button>
+        <p id="form-status" class="text-sm text-graytext hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ endpoint: site.formEndpoint, email: site.email }}>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    form?.addEventListener("submit", async (e) => {
+      if (form.company_website.value) { e.preventDefault(); return; } // honeypot
+      if (!endpoint) {
+        // No webhook configured yet — fall back to an email draft.
+        e.preventDefault();
+        const params = new URLSearchParams({
+          subject: `Website inquiry — ${form.business.value || form.name.value}`,
+          body: `Name: ${form.name.value}\nEmail: ${form.email.value}\nBusiness: ${form.business.value}\nIndustry: ${form.industry.value}\n\n${form.message.value}`,
+        });
+        window.location.href = `mailto:${email}?${params.toString()}`;
+        return;
+      }
+      e.preventDefault();
+      status.classList.remove("hidden");
+      status.textContent = "Sending…";
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        if (!res.ok) throw new Error();
+        form.reset();
+        status.textContent = "Thank you — we'll be in touch shortly.";
+      } catch {
+        status.textContent = `Something went wrong. Please email ${email} directly.`;
+      }
+    });
+  </script>
+</Base>

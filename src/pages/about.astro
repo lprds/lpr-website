@@ -1,0 +1,79 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { site } from "../data/site";
+
+const expertise = [
+  "Bookkeeping, controller, and fractional-CFO work across QuickBooks and Xero",
+  "Construction and project-based finance — job costing, WIP, insurance audits",
+  "Operations and admin: process design, SOPs, and back-office management",
+  "Practical AI and automation, with governance and risk handled first",
+  "Bilingual service — English and Spanish",
+];
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.founder,
+  jobTitle: site.founderTitle,
+  worksFor: { "@type": "ProfessionalService", name: site.name, url: site.domain },
+  url: `${site.domain}/about`,
+  sameAs: [site.linkedin],
+};
+const aboutLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: `About ${site.name}`,
+  url: `${site.domain}/about`,
+};
+---
+<Base
+  title={`About LPR Business Services | ${site.founder}, ${site.founderTitle}`}
+  description="LPR Business Services is a remote-first finance, operations, and AI partner founded by Danielle Stone — bilingual, nationwide, and built for how modern businesses work."
+  jsonLd={[personLd, aboutLd]}
+>
+  <PageHero
+    eyebrow="About LPR"
+    title="A modern back-office partner, built around how you actually work."
+    sub="LPR Business Services brings finance, operations, and AI together under one roof — delivered remotely, in English and Spanish, to growing businesses nationwide."
+  />
+
+  <Section title="Why LPR exists">
+    <div class="prose-lg max-w-2xl mt-6 space-y-4 text-graytext leading-relaxed">
+      <p>
+        Most growing businesses don't need a full finance department, an office manager, and a
+        separate automation consultant — they need one trusted partner who can do all three and
+        make them work together. That's the gap LPR was built to fill.
+      </p>
+      <p>
+        Founded by {site.founder}, LPR pairs hands-on bookkeeping and controller work with
+        forward-looking, CFO-level guidance, the operational support that keeps a business running
+        day to day, and practical AI that removes the repetitive parts. The result is a back office
+        that's accurate, calm, and built to scale — without the cost and overhead of building it
+        in-house.
+      </p>
+      <p>
+        We're remote-first on purpose. There's no office to visit and never will be a desk to pay
+        for — just senior-level support delivered wherever your business runs, in the language you
+        prefer.
+      </p>
+    </div>
+  </Section>
+
+  <div class="bg-cream/50 border-y border-line">
+    <Section title="Where we go deep">
+      <ul class="grid md:grid-cols-2 gap-4 mt-8">
+        {expertise.map((e) => (
+          <li class="rounded-xl border border-line bg-white p-5 flex gap-3">
+            <span class="text-gold-deep font-display font-bold">✓</span>
+            <span class="text-ink">{e}</span>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  </div>
+
+  <CtaBand />
+</Base>
