@@ -24,7 +24,9 @@ export const site = {
     "LPR Business Services is your remote-first partner for bookkeeping, controller and fractional-CFO support, operations and admin, plus AI automation. Bilingual, nationwide.",
 
   // Set at build time via env; falls back to mailto if unset.
-  formEndpoint: import.meta.env.PUBLIC_CONTACT_WEBHOOK ?? "",
+  formEndpoint:
+    import.meta.env.PUBLIC_CONTACT_WEBHOOK ??
+    "https://n8n-production-d34f.up.railway.app/webhook/lpr-contact",
   // Primary call-to-action. Label is centralized here; destination falls back
   // to the Contact page until/unless a (free) scheduler URL is provided.
   ctaLabel: "Let's get started",
