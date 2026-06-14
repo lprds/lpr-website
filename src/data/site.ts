@@ -27,7 +27,7 @@ export const site = {
   formEndpoint: import.meta.env.PUBLIC_CONTACT_WEBHOOK ?? "",
   // Primary call-to-action. Label is centralized here; destination falls back
   // to the Contact page until/unless a (free) scheduler URL is provided.
-  ctaLabel: "Request a consultation",
+  ctaLabel: "Let's get started",
   bookingUrl: import.meta.env.PUBLIC_BOOKING_URL ?? "/contact",
   // Cloudflare Web Analytics token (Pages → Web Analytics).
   cfAnalyticsToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN ?? "",

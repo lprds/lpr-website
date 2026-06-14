@@ -6,10 +6,10 @@ import CtaBand from "../components/CtaBand.astro";
 import { site } from "../data/site";
 
 const expertise = [
-  "Bookkeeping, controller, and fractional-CFO work across QuickBooks and Xero",
+  "Bookkeeping, controller, and fractional-CFO work in QuickBooks, Xero, and Ramp",
   "Construction and project-based finance — job costing, WIP, insurance audits",
   "Operations and admin: process design, SOPs, and back-office management",
-  "Practical AI and automation, with governance and risk handled first",
+  "Practical AI and automation, applied with guardrails and a person in the loop",
   "Bilingual service — English and Spanish",
 ];
 
@@ -31,33 +31,39 @@ const aboutLd = {
 ---
 <Base
   title={`About LPR Business Services | ${site.founder}, ${site.founderTitle}`}
-  description="LPR Business Services is a remote-first finance, operations, and AI partner founded by Danielle Stone — bilingual, nationwide, and built for how modern businesses work."
+  description="LPR Business Services is a remote-first finance, operations, and AI partner founded by Danielle Stone — bilingual, nationwide, and built around clarity, intention, and systems that actually work."
   jsonLd={[personLd, aboutLd]}
 >
   <PageHero
     eyebrow="About LPR"
-    title="A modern back-office partner, built around how you actually work."
-    sub="LPR Business Services brings finance, operations, and AI together under one roof — delivered remotely, in English and Spanish, to growing businesses nationwide."
+    title="Financial clarity, run with intention."
+    sub="LPR Business Services brings finance, operations, and AI together under one roof — delivered remotely, in English and Spanish, with the calm of systems that actually work."
   />
 
   <Section title="Why LPR exists">
-    <div class="prose-lg max-w-2xl mt-6 space-y-4 text-graytext leading-relaxed">
+    <div class="max-w-2xl mt-6 space-y-4 text-graytext leading-relaxed text-lg">
       <p>
         Most growing businesses don't need a full finance department, an office manager, and a
-        separate automation consultant — they need one trusted partner who can do all three and
-        make them work together. That's the gap LPR was built to fill.
+        separate automation consultant — they need one trusted partner who can do all three and make
+        them work together. That's the gap LPR was built to fill.
       </p>
       <p>
         Founded by {site.founder}, LPR pairs hands-on bookkeeping and controller work with
-        forward-looking, CFO-level guidance, the operational support that keeps a business running
-        day to day, and practical AI that removes the repetitive parts. The result is a back office
-        that's accurate, calm, and built to scale — without the cost and overhead of building it
-        in-house.
+        forward-looking, CFO-level guidance, the operational support that keeps a business running day
+        to day, and practical AI that clears the manual bottlenecks. We've worked with businesses at
+        every stage — from solo founders who need clean books and reliable reporting to established
+        companies ready for cash-flow forecasting, job costing, and strategic planning — across
+        construction, professional services, creative agencies, and technology.
       </p>
       <p>
-        We're remote-first on purpose. There's no office to visit and never will be a desk to pay
-        for — just senior-level support delivered wherever your business runs, in the language you
-        prefer.
+        Our approach is deliberately intentional: we focus your resources on their highest needs,
+        build operational systems that hold up under pressure, and keep technology in service of
+        people — AI does the repetitive lifting, while judgment stays human. The result is financial
+        clarity and a back office you can stop worrying about.
+      </p>
+      <p>
+        We're remote-first on purpose. There's no office to visit and never a desk to pay for — just
+        senior-level support delivered wherever your business runs, in the language you prefer.
       </p>
     </div>
   </Section>
