@@ -51,6 +51,7 @@ export const industryNav = [
 export const mainNav = [
   { label: "Services", children: serviceNav },
   { label: "Industries", children: industryNav },
+  { label: "Resources", href: "/resources" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

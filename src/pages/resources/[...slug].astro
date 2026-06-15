@@ -1,0 +1,103 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Section from "../../components/Section.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { getCollection, render } from "astro:content";
+import { site } from "../../data/site";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("resources", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { "@type": "Person", name: post.data.author },
+  publisher: { "@type": "Organization", name: site.name, url: site.domain },
+  mainEntityOfPage: `${site.domain}/resources/${post.id}`,
+  inLanguage: "en-US",
+};
+---
+<Base title={`${post.data.title} | ${site.name}`} description={post.data.description} jsonLd={[articleLd]}>
+  <PageHero eyebrow={post.data.eyebrow} title={post.data.title} sub={post.data.description} />
+
+  <Section>
+    <article class="post-body max-w-2xl">
+      <div class="text-sm text-graytext mb-8 border-b border-line pb-5">
+        By {post.data.author} ·
+        <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+      </div>
+
+      <Content />
+
+      {post.data.tags.length > 0 && (
+        <div class="mt-10 flex flex-wrap gap-2">
+          {post.data.tags.map((t) => (
+            <span class="text-xs rounded-full border border-line bg-cream px-3 py-1 text-graytext">{t}</span>
+          ))}
+        </div>
+      )}
+
+      <div class="mt-10">
+        <a href="/resources" class="text-red-deep font-medium hover:underline">← All resources</a>
+      </div>
+    </article>
+  </Section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .post-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-body :global(h3) {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-ink);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .post-body :global(p) {
+    color: var(--color-graytext);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+    font-size: 1.0625rem;
+  }
+  .post-body :global(ul) {
+    margin: 0 0 1.2rem 1.25rem;
+    list-style: disc;
+    color: var(--color-graytext);
+  }
+  .post-body :global(li) {
+    margin-bottom: 0.45rem;
+    line-height: 1.7;
+  }
+  .post-body :global(strong) {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .post-body :global(a) {
+    color: var(--color-red-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
