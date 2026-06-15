@@ -6,7 +6,8 @@ import CtaBand from "../../components/CtaBand.astro";
 import { getCollection } from "astro:content";
 import { site } from "../../data/site";
 
-const posts = (await getCollection("resources", ({ data }) => !data.draft)).sort(
+const showDrafts = import.meta.env.SHOW_DRAFTS === "true";
+const posts = (await getCollection("resources", ({ data }) => showDrafts || !data.draft)).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 
