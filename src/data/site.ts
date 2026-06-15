@@ -31,8 +31,10 @@ export const site = {
   // to the Contact page until/unless a (free) scheduler URL is provided.
   ctaLabel: "Let's get started",
   bookingUrl: import.meta.env.PUBLIC_BOOKING_URL ?? "/contact",
-  // Cloudflare Web Analytics token (Pages → Web Analytics).
-  cfAnalyticsToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN ?? "",
+  // Cloudflare Web Analytics beacon token (public site ID — safe to commit; appears in page HTML).
+  // Set directly because CF's automatic injection does NOT fire on Pages-served content;
+  // this renders the manual beacon via SeoHead. Env var still overrides if set.
+  cfAnalyticsToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN ?? "d74d5a42f18e4d89a985eb072b7f3379",
 } as const;
 
 export const serviceNav = [
